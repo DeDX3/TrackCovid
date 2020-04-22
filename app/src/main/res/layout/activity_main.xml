@@ -1,72 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvDate"
-        style="@style/DataStyle"
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/archia"
+        android:gravity="center_horizontal"
+        android:text="TrackCovid"
+        android:textColor="#040000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvNewActive"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvActive"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvNewConfirmed"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvConfirmed"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvNewRecovered"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvRecovered"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvNewDeaths"
-        style="@style/DataStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tvDeaths"
-        style="@style/DataStyle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btnFetch"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/archia"
+            android:gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Fetch" />
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/UpperStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="Confirmed"
+            android:fontFamily="@font/archia"
+            android:textColor="#FF0000" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/UpperStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Active"
+            android:fontFamily="@font/archia"
+            android:textColor="#0000FF" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/UpperStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Recovered"
+            android:fontFamily="@font/archia"
+            android:textColor="#00FF0B" />
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/UpperStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:text="Deceased"
+            android:fontFamily="@font/archia"
+            android:textColor="#6E6969" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvNewConfirmed"
+            style="@style/MiddleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:textColor="#FF0000"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvNewActive"
+            style="@style/MiddleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#0000FF"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvNewRecovered"
+            style="@style/MiddleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#00FF0B"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvNewDeaths"
+            style="@style/MiddleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:textColor="#6E6969"
+            android:fontFamily="@font/archia"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvConfirmed"
+            style="@style/BottomStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:textColor="#FF0000"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvActive"
+            style="@style/BottomStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#0000FF"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvRecovered"
+            style="@style/BottomStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#00FF0B"
+            android:fontFamily="@font/archia"/>
+
+        <TextView
+            android:id="@+id/tvDeaths"
+            style="@style/BottomStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:textColor="#6E6969"
+            android:fontFamily="@font/archia"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnFetch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="Update" />
+    </LinearLayout>
+
 </LinearLayout>
