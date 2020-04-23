@@ -1,6 +1,8 @@
 package com.example.trackcovid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,20 +20,40 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView tvActive, tvConfirmed, tvRecovered, tvDeaths, tvDate;
-    TextView tvNewActive, tvNewRecovered, tvNewConfirmed, tvNewDeaths;
-    RequestQueue rQueue;
-    Button btnFetch;
+    private TextView tvActive, tvConfirmed, tvRecovered, tvDeaths, tvDate;
+    private TextView tvNewActive, tvNewRecovered, tvNewConfirmed, tvNewDeaths;
 
-    String active, confirmed, deaths, recovered, date;
-    String newConfirmed, newDeaths, newRecovered;
+    private RecyclerView recyclerView;
+    private StateDataAdapter adapter;
+    private ArrayList<StateListItem> list;
+    private RequestQueue rQueue;
+
+    //These strings will represent total country data
+    private String active, confirmed, deaths, recovered, date;
+    private String newConfirmed, newDeaths, newRecovered;
+    private int nActive;
+
+    //These strings will represent statewise data
+    private String stState, stConfirmed, stActive, stRecovered, stDeaths;
+    private String stNewConfirmed, stNewRecovered, stNewDeaths;
+    private int stNewActive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Create RecyclerView to show statewise data
+        recyclerView = findViewById(R.id.rvStateWiseData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        list = new ArrayList<>();
+
         rQueue = Volley.newRequestQueue(this);
 
         tvDate = findViewById(R.id.tvDate);
@@ -43,10 +65,9 @@ public class MainActivity extends AppCompatActivity {
         tvNewRecovered = findViewById(R.id.tvNewRecovered);
         tvDeaths = findViewById(R.id.tvDeaths);
         tvNewDeaths = findViewById(R.id.tvNewDeaths);
+        Button btnUpdate = findViewById(R.id.btnUpdate);
 
-        btnFetch = findViewById(R.id.btnFetch);
-
-        btnFetch.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 jsonParse();
@@ -61,37 +82,58 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    //Get array through API
+                    //Get array
                     JSONArray jsonArray = response.getJSONArray("statewise");
-                    JSONObject statewise = jsonArray.getJSONObject(0);
+                    JSONObject totaldata = jsonArray.getJSONObject(0);
 
-                    //Get data from array
-                    date = statewise.getString("lastupdatedtime");
-                    active = statewise.getString("active");
-                    confirmed = statewise.getString("confirmed");
-                    recovered = statewise.getString("recovered");
-                    deaths = statewise.getString("deaths");
-                    newConfirmed = statewise.getString("deltaconfirmed");
-                    newRecovered = statewise.getString("deltarecovered");
-                    newDeaths = statewise.getString("deltadeaths");
+                    //Get Data from array.
+                    //This is total country data.
+                    date = totaldata.getString("lastupdatedtime");
+                    active = totaldata.getString("active");
+                    confirmed = totaldata.getString("confirmed");
+                    recovered = totaldata.getString("recovered");
+                    deaths = totaldata.getString("deaths");
+                    newConfirmed = totaldata.getString("deltaconfirmed");
+                    newRecovered = totaldata.getString("deltarecovered");
+                    newDeaths = totaldata.getString("deltadeaths");
+
+                    for(int i = 1; i < jsonArray.length(); i++){
+                        JSONObject state = jsonArray.getJSONObject(i);
+
+                        //This is statewise data.
+                        stState = state.getString("state");
+                        stActive = state.getString("active");
+                        stConfirmed = state.getString("confirmed");
+                        stRecovered = state.getString("recovered");
+                        stDeaths = state.getString("deaths");
+                        stNewRecovered = state.getString("deltarecovered");
+                        stNewDeaths = state.getString("deltadeaths");
+                        stNewConfirmed = state.getString("deltaconfirmed");
+                        stNewActive = (Integer.parseInt(stNewConfirmed)) - (Integer.parseInt(stNewRecovered)) + (Integer.parseInt(stNewDeaths));
+
+                        list.add(new StateListItem(stState, stActive, stConfirmed, stRecovered, stDeaths, stNewConfirmed, stNewRecovered, stNewDeaths, stNewActive));
+                        adapter = new StateDataAdapter(MainActivity.this, list);
+                        recyclerView.setAdapter(adapter);
+
+                    }
 
                     //Get new active cases
-                    int nActive = (Integer.parseInt(newConfirmed)) - (Integer.parseInt(newRecovered)) + (Integer.parseInt(newDeaths));
+                    int newActive = (Integer.parseInt(newConfirmed)) - (Integer.parseInt(newRecovered)) + (Integer.parseInt(newDeaths));
 
                     //Display on TextView
-                    tvDate.setText("Last Updated: "+date+"\n");
+                    tvDate.setText("Last Updated: "+date);
 
-                    tvNewActive.setText("New Active Cases: "+nActive);
-                    tvActive.setText("Total Active Cases: "+active+"\n");
+                    tvNewActive.setText("[+"+newActive+"]");
+                    tvActive.setText(active);
 
-                    tvNewConfirmed.setText("New Confirmed Cases: "+newConfirmed);
-                    tvConfirmed.setText("Total Confirmed Cases: "+confirmed+"\n");
+                    tvNewConfirmed.setText("[+"+newConfirmed+"]");
+                    tvConfirmed.setText(confirmed);
 
-                    tvNewRecovered.setText("New Recovered Cases: "+newRecovered);
-                    tvRecovered.setText("Total Recovered Cases: "+recovered+"\n");
+                    tvNewRecovered.setText("[+"+newRecovered+"]");
+                    tvRecovered.setText(recovered);
 
-                    tvNewDeaths.setText("New Deaths: "+newDeaths);
-                    tvDeaths.setText("Total Deaths: "+deaths+"\n");
+                    tvNewDeaths.setText("[+"+newDeaths+"]");
+                    tvDeaths.setText(deaths);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
