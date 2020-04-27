@@ -15,8 +15,8 @@
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:fontFamily="@font/archia"
-        android:paddingLeft="20dp"
-        android:textColor="@android:color/black" />
+        android:textColor="?attr/stateText"
+        android:paddingLeft="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#FF0000"
+            android:textColor="?attr/confirmedText"
             android:textSize="10sp" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#0000FF"
+            android:textColor="?attr/activeText"
             android:textSize="10sp" />
 
         <TextView
@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#00FF0B"
+            android:textColor="?attr/recoveredText"
             android:textSize="10sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#6E6969"
+            android:textColor="?attr/deceasedText"
             android:textSize="10sp" />
     </LinearLayout>
 
@@ -76,7 +76,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#FF0000"
+            android:textColor="?attr/confirmedText"
             android:textSize="14sp" />
 
         <TextView
@@ -86,7 +86,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#0000FF"
+            android:textColor="?attr/activeText"
             android:textSize="14sp" />
 
         <TextView
@@ -96,7 +96,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#00FF0B"
+            android:textColor="?attr/recoveredText"
             android:textSize="14sp" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/archia"
             android:gravity="center_horizontal"
-            android:textColor="#6E6969"
+            android:textColor="?attr/deceasedText"
             android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>

@@ -6,6 +6,42 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="backgroundColor">#FFFFFF</item>
+        <item name="lastUpdatedText">#000000</item>
+        <item name="titleText">#000000</item>
+        <item name="stateText">#000000</item>
+        <item name="confirmedText">#FF0000</item>
+        <item name="activeText">#0000FF</item>
+        <item name="recoveredText">#FC02A543</item>
+        <item name="deceasedText">#6E6969</item>
+        <item name="recyclerBackground">#F1F1F1</item>
+        
+        <item name="android:windowAnimationStyle">@style/ModeChangeAnimation</item>
+    </style>
+
+    <style name="NightMode" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--Dark theme. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="backgroundColor">#000000</item>
+        <item name="titleText">#FFFFFF</item>
+        <item name="lastUpdatedText">#FFFFFF</item>
+        <item name="stateText">#AAA</item>
+        <item name="confirmedText">#FA8072</item>
+        <item name="activeText">#00FFFF</item>
+        <item name="recoveredText">#90EE90</item>
+        <item name="deceasedText">#B3B3B3</item>
+        <item name="recyclerBackground">#FC282828</item>
+
+        <item name="android:windowAnimationStyle">@style/ModeChangeAnimation</item>
+    </style>
+
+    <style name="ModeChangeAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
     <style name="UpperStyle">

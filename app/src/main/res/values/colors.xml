@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="lastUpdated">#000000</color>
+    <color name="titleColor">#000000</color>
+    <color name="stateName">#000000</color>
+    <color name="stateList">#F1F1F1</color>
+    <color name="textConfirmed">#FF0000</color>
+    <color name="textActive">#0000FF</color>
+    <color name="textRecovered">#FC02A543</color>
+    <color name="textDeceased">#6E6969</color>
 </resources>

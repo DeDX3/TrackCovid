@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="titleText" format="color"/>
+        <attr name="stateText" format="color"/>
+        <attr name="lastUpdatedText" format="color"/>
+        <attr name="confirmedText" format="color"/>
+        <attr name="activeText" format="color"/>
+        <attr name="recoveredText" format="color"/>
+        <attr name="deceasedText" format="color"/>
+        <attr name="recyclerBackground" format="color"/>
+    </declare-styleable>
+    
+</resources>
